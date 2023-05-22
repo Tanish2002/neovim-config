@@ -1,68 +1,50 @@
-{ pkgs, ... }: {
+{
+  pkgs,
+  helpers,
+  ...
+}: {
+  imports = [./lsp ./misc ./lualine ./tree ./barbar ./telescope ./which-key ./alpha];
   config = {
-    colorschemes.onedark.enable = true;
+    colorschemes.catppuccin = {
+      enable = true;
+      terminalColors = true;
+      disableItalic = false;
+      disableBold = false;
+    };
     plugins = {
-      barbar = {
+      treesitter = {
         enable = true;
-        animations = true;
+        ensureInstalled = [
+          "go"
+          "rust"
+          "nix"
+          "lua"
+          "haskell"
+          "java"
+        ];
+        folding = true;
+        indent = true;
+        nixGrammars = true;
+        nixvimInjections = true;
       };
-      #lightline.enable = true;
-      comment-nvim.enable = true;
-      coq-nvim = {
-        enable = true;
-        installArtifacts = true;
-      };
-      lsp = {
-        enable = true;
-        servers = {
-          gopls.enable = true;
-          nil_ls.enable = true;
-          rust-analyzer.enable = true;
-        };
-      };
-      lspsaga = {
-        enable = true;
-        icons.codeAction = "";
-        signs = {
-          error = "";
-          hint = "";
-          info = "";
-          warning = "";
-        };
-      };
-      lualine.enable = true;
-      nvim-autopairs.enable = true;
-      nvim-tree.enable = true;
-      startify.enable = true;
-      telescope.enable = true;
-      # treesitter.enable = true;
+      project-nvim.enable = true;
     };
-    extraPlugins = with pkgs.vimPlugins; [ vim-nix vim-go ];
-    extraPackages = with pkgs; [ gcc gopls python39Packages.python-lsp-server ];
-    globals.mapleader = " "; # Sets the leader key to comma
-    maps = {
-      # Async LSP Finder
-      normal."<leader>gh" = {
-        silent = true;
-        action = ":Lspsaga lsp_finder<CR>";
-      };
-      # Code Action
-      normal."<leader>ca" = {
-        silent = true;
-        action = ":Lspsaga code_action<CR>";
-      };
-      visual."<leader>ca" = {
-        silent = true;
-        action = ":<C-U>Lspsaga range_code_action<CR>";
-      };
-      # Rename
-      normal."<leader>cr" = { action = ":Lspsaga rename<CR>"; };
-      # View Definations
-      normal."<leader>gd" = { action = ":Lspsaga preview_definition<CR>"; };
-    };
+    globals.mapleader = " "; # Sets the leader key to space
     options = {
       number = true; # Show line numbers
       relativenumber = true; # Show relative line numbers
+      guifont = "Iosevka Nerd Font Mono:h8";
+      clipboard = "unnamedplus";
+      timeout = true;
+      timeoutlen = 300;
+      smarttab = true;
+      foldenable = false;
+    };
+    globals = {
+      # neovide_padding_top = 50;
+      # neovide_padding_bottom = 50;
+      # neovide_padding_right = 50;
+      # neovide_padding_left = 50;
     };
   };
 }
