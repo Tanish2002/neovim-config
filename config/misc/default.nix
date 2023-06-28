@@ -1,5 +1,7 @@
-{...}: {
+{pkgs, ...}: {
+  imports = [./toggleterm];
   config = {
+    extraPlugins = with pkgs.vimPlugins; [vim-wakatime];
     plugins = {
       nvim-autopairs = {
         enable = true;
@@ -9,7 +11,17 @@
         enable = true;
         mappings.extended = true;
       };
-      nvim-colorizer.enable = true;
+      nvim-colorizer = {
+        enable = true;
+        userDefaultOptions = {
+          tailwind = true;
+          sass.enable = true;
+        };
+      };
+      presence-nvim = {
+        enable = true;
+        enableLineNumber = true;
+      };
     };
     autoCmd = [
       {

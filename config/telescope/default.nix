@@ -89,6 +89,12 @@
         silent = true;
         desc = "Resume previous search";
       };
+      "<leader><leader>" = {
+        action = ''function() require("telescope.builtin").find_files() end'';
+        lua = true;
+        silent = true;
+        desc = "Find Files";
+      };
       "<leader>ff" = {
         action = ''function() require("telescope.builtin").find_files() end'';
         lua = true;
@@ -195,6 +201,12 @@
         lua = true;
         silent = true;
         desc = "Search symbols";
+      };
+      "<leader>," = {
+        action = ''function() require("telescope.builtin").buffers() end'';
+        lua = true;
+        silent = true;
+        desc = "Switch Buffers";
       };
     };
     extraPlugins = with pkgs.vimPlugins; [project-nvim];

@@ -1,9 +1,5 @@
-{
-  pkgs,
-  helpers,
-  ...
-}: {
-  imports = [./lsp ./misc ./lualine ./tree ./barbar ./telescope ./which-key ./alpha];
+{...}: {
+  imports = [./lsp ./misc ./telescope ./which-key ./ui];
   config = {
     colorschemes.catppuccin = {
       enable = true;
@@ -11,6 +7,7 @@
       disableItalic = false;
       disableBold = false;
     };
+    luaLoader.enable = true;
     plugins = {
       treesitter = {
         enable = true;
@@ -21,6 +18,9 @@
           "lua"
           "haskell"
           "java"
+          "html"
+          "astro"
+          "javascript"
         ];
         folding = true;
         indent = true;
@@ -39,6 +39,26 @@
       timeoutlen = 300;
       smarttab = true;
       foldenable = false;
+      tabstop = 2;
+      shiftwidth = 2;
+      autoindent = true;
+      cindent = true;
+      smartindent = true;
+      smartcase = true;
+      ignorecase = true;
+      infercase = true;
+      showmode = false;
+      ruler = false;
+      showcmd = false;
+      breakindent = true;
+      copyindent = true;
+      cursorline = true;
+      expandtab = true;
+      preserveindent = true;
+      pumheight = 10;
+      undofile = true;
+      virtualedit = "block";
+      wrap = false;
     };
     globals = {
       # neovide_padding_top = 50;

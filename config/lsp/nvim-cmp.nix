@@ -7,21 +7,35 @@
   config = {
     # some functions for snippets
     extraConfigLuaPre = ''
-      local cmp_ultisnips_mappings = require("cmp_nvim_ultisnips.mappings")
-      local expand_or_jump_forwards = function(fallback)
-      	cmp_ultisnips_mappings.compose { "expand", "jump_forwards", "select_next_item" }(fallback)
+      --      local cmp_ultisnips_mappings = require("cmp_nvim_ultisnips.mappings")
+      --      local expand_or_jump_forwards = function(fallback)
+      --      	cmp_ultisnips_mappings.compose { "expand", "jump_forwards", "select_next_item" }(fallback)
+      --      end
+      --      local jump_backwards = function(fallback)
+      --      	cmp_ultisnips_mappings.compose { "jump_backwards", "select_prev_item" }(fallback)
+      --      end
+            -- require("luasnip.loaders.from_vscode").lazy_load()
+            -- require("luasnip.loaders.from_snipmate").lazy_load()
+            -- require("luasnip.loaders.from_lua").lazy_load()
+      local has_words_before = function()
+        unpack = unpack or table.unpack
+        local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+        return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
       end
-      local jump_backwards = function(fallback)
-      	cmp_ultisnips_mappings.compose { "jump_backwards", "select_prev_item" }(fallback)
-      end
+      local luasnip = require("luasnip")
     '';
     plugins = {
+      luasnip = {
+        enable = true;
+        fromVscode = [{}];
+      };
       cmp-emoji.enable = true;
       cmp-nvim-lsp.enable = true;
       cmp-nvim-lsp-document-symbol.enable = true;
       cmp-nvim-lsp-signature-help.enable = true;
       cmp-nvim-lua.enable = true;
-      cmp-nvim-ultisnips.enable = true;
+      # cmp-nvim-ultisnips.enable = true;
+      cmp_luasnip.enable = true;
       cmp-path.enable = true;
 
       lspkind = {
@@ -42,12 +56,14 @@
       };
       nvim-cmp = {
         enable = true;
-        snippet.expand = "ultisnips";
+        # snippet.expand = "ultisnips";
+        snippet.expand = "luasnip";
         sources = [
           {name = "nvim_lsp";}
           {name = "nvim_lsp_document_symbol";}
           {name = "nvim_lsp_signature_help";}
-          {name = "ultisnips";}
+          # {name = "ultisnips";}
+          {name = "luasnip";}
           {name = "path";}
           {name = "buffer";}
           {name = "emoji";}
@@ -69,17 +85,33 @@
           "<Tab>" = {
             modes = ["i" "s"];
             action = ''
-              cmp.mapping(function(fallback)
-                expand_or_jump_forwards(fallback)
-              end, { "i", "s" })
+              function(fallback)
+                if cmp.visible() then
+                  cmp.select_next_item()
+                -- You could replace the expand_or_jumpable() calls with expand_or_locally_jumpable()
+                -- they way you will only jump inside the snippet region
+                elseif luasnip.expand_or_locally_jumpable() then
+                  luasnip.expand_or_jump()
+                elseif has_words_before() then
+                  cmp.complete()
+                else
+                  fallback()
+                end
+              end
             '';
           };
           "<S-Tab>" = {
             modes = ["i" "s"];
             action = ''
-               cmp.mapping(function(fallback)
-                jump_backwards(fallback)
-              end, { "i", "s" })
+              function(fallback)
+                if cmp.visible() then
+                  cmp.select_prev_item()
+                elseif luasnip.jumpable(-1) then
+                  luasnip.jump(-1)
+                else
+                  fallback()
+                end
+              end
             '';
           };
           "<C-Space>" = "cmp.mapping.complete()";
@@ -97,7 +129,8 @@
     # Snippets
     extraPlugins = with pkgs.vimPlugins; [
       vim-snippets
-      ultisnips
+      friendly-snippets
+      # ultisnips
     ];
 
     # Highlights for custom theme
@@ -107,112 +140,113 @@
         fg = "NONE";
       };
       Pmenu = {
-        fg = "#FFFFFF";
+        fg = helpers.mkRaw "colors.crust";
         bg = helpers.mkRaw "colors.mantle";
       };
       CmpItemKindSnippet = {
         bg = helpers.mkRaw "colors.mauve";
-        fg = "#FFFFFF";
+        fg = helpers.mkRaw "colors.crust";
       };
       CmpItemKindKeyword = {
         bg = helpers.mkRaw "colors.red";
-        fg = "#FFFFFF";
+        fg = helpers.mkRaw "colors.crust";
       };
+
       CmpItemKindText = {
         bg = helpers.mkRaw "colors.teal";
-        fg = "#FFFFFF";
+        fg = helpers.mkRaw "colors.crust";
       };
       CmpItemKindMethod = {
         bg = helpers.mkRaw "colors.blue";
-        fg = "#FFFFFF";
+        fg = helpers.mkRaw "colors.crust";
       };
       CmpItemKindConstructor = {
         bg = helpers.mkRaw "colors.blue";
-        fg = "#FFFFFF";
+        fg = helpers.mkRaw "colors.crust";
       };
       CmpItemKindFunction = {
         bg = helpers.mkRaw "colors.blue";
-        fg = "#FFFFFF";
+        fg = helpers.mkRaw "colors.crust";
       };
       CmpItemKindFolder = {
         bg = helpers.mkRaw "colors.blue";
-        fg = "#FFFFFF";
+        fg = helpers.mkRaw "colors.crust";
       };
       CmpItemKindModule = {
         bg = helpers.mkRaw "colors.blue";
-        fg = "#FFFFFF";
+        fg = helpers.mkRaw "colors.crust";
       };
       CmpItemKindConstant = {
         bg = helpers.mkRaw "colors.peach";
-        fg = "#FFFFFF";
+        fg = helpers.mkRaw "colors.crust";
       };
       CmpItemKindField = {
         bg = helpers.mkRaw "colors.green";
-        fg = "#FFFFFF";
+        fg = helpers.mkRaw "colors.crust";
       };
       CmpItemKindProperty = {
         bg = helpers.mkRaw "colors.green";
-        fg = "#FFFFFF";
+        fg = helpers.mkRaw "colors.crust";
       };
       CmpItemKindEnum = {
         bg = helpers.mkRaw "colors.green";
-        fg = "#FFFFFF";
+        fg = helpers.mkRaw "colors.crust";
       };
       CmpItemKindUnit = {
         bg = helpers.mkRaw "colors.green";
-        fg = "#FFFFFF";
+        fg = helpers.mkRaw "colors.crust";
       };
       CmpItemKindClass = {
         bg = helpers.mkRaw "colors.yellow";
-        fg = "#FFFFFF";
+        fg = helpers.mkRaw "colors.crust";
       };
       CmpItemKindVariable = {
         bg = helpers.mkRaw "colors.red";
-        fg = "#FFFFFF";
+        fg = helpers.mkRaw "colors.crust";
       };
       CmpItemKindFile = {
         bg = helpers.mkRaw "colors.blue";
-        fg = "#FFFFFF";
+        fg = helpers.mkRaw "colors.crust";
       };
       CmpItemKindInterface = {
         bg = helpers.mkRaw "colors.yellow";
-        fg = "#FFFFFF";
+        fg = helpers.mkRaw "colors.crust";
       };
       CmpItemKindColor = {
         bg = helpers.mkRaw "colors.red";
-        fg = "#FFFFFF";
+        fg = helpers.mkRaw "colors.crust";
       };
       CmpItemKindReference = {
         bg = helpers.mkRaw "colors.red";
-        fg = "#FFFFFF";
+        fg = helpers.mkRaw "colors.crust";
       };
       CmpItemKindEnumMember = {
         bg = helpers.mkRaw "colors.red";
-        fg = "#FFFFFF";
+        fg = helpers.mkRaw "colors.crust";
       };
       CmpItemKindStruct = {
         bg = helpers.mkRaw "colors.blue";
-        fg = "#FFFFFF";
+        fg = helpers.mkRaw "colors.crust";
       };
       CmpItemKindValue = {
         bg = helpers.mkRaw "colors.peach";
-        fg = "#FFFFFF";
+        fg = helpers.mkRaw "colors.crust";
       };
       CmpItemKindEvent = {
         bg = helpers.mkRaw "colors.blue";
-        fg = "#FFFFFF";
+        fg = helpers.mkRaw "colors.crust";
       };
       CmpItemKindOperator = {
         bg = helpers.mkRaw "colors.blue";
-        fg = "#FFFFFF";
+        fg = helpers.mkRaw "colors.crust";
       };
       CmpItemKindTypeParameter = {
         bg = helpers.mkRaw "colors.blue";
-        fg = "#FFFFFF";
+        fg = helpers.mkRaw "colors.crust";
       };
       CmpItemKindCopilot = {
         bg = helpers.mkRaw "colors.teal";
-        fg = "#FFFFFF";
+        fg = helpers.mkRaw "colors.crust";
       };
     };
   };

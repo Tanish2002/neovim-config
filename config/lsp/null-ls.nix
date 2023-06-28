@@ -16,6 +16,7 @@
         stylua.enable = true;
         shfmt.enable = true;
         nixpkgs_fmt.enable = true;
+        prettier.enable = true;
       };
     };
   };
