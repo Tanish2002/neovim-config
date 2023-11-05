@@ -32,51 +32,80 @@
         };
       };
     };
-    maps.normal = {
-      "]b" = {
+    keymaps = [
+      {
+        key = "]b";
+        mode = ["n"];
         action = "<cmd>BufferNext<cr>";
-        silent = true;
-        desc = "Next Buffer";
-      };
-      "[b" = {
+        options = {
+          silent = true;
+          desc = "Next Buffer";
+        };
+      }
+      {
+        key = "[b";
+        mode = ["n"];
         action = "<cmd>BufferPrevious<cr>";
-        silent = true;
-        desc = "Previous Buffer";
-      };
-      "<leader>b" = {
-        desc = " Buffer";
-      };
+        options = {
+          silent = true;
+          desc = "Previous Buffer";
+        };
+      }
       # Pin/unpin buffer
-      "<leader>bp" = {
+      {
+        key = "<leader>bp";
+        mode = ["n"];
         action = "<cmd>BufferPin<cr>";
-        silent = true;
-        desc = "Pin Buffer";
-      };
-      "<leader>br" = {
+        options = {
+          silent = true;
+          desc = "Pin Buffer";
+        };
+      }
+      {
+        key = "<leader>br";
+        mode = ["n"];
         action = "<cmd>BufferRestore<cr>";
-        silent = true;
-        desc = "Restore Buffer";
-      };
-      "<leader>bc" = {
+        options = {
+          silent = true;
+          desc = "Restore Buffer";
+        };
+      }
+      {
+        key = "<leader>bc";
+        mode = ["n"];
         action = "<cmd>BufferCloseAllButCurrent<cr>";
-        silent = true;
-        desc = "Close all Buffers except Current";
-      };
-      "<leader>bC" = {
+        options = {
+          silent = true;
+          desc = "Close all Buffers except Current";
+        };
+      }
+      {
+        key = "<leader>bC";
+        mode = ["n"];
         action = "<cmd>BufferWipeout<cr>";
-        silent = true;
-        desc = "Close all Buffers";
-      };
-      "<leader>bd" = {
+        options = {
+          silent = true;
+          desc = "Close all Buffers";
+        };
+      }
+      {
+        key = "<leader>bd";
+        mode = ["n"];
         action = "<cmd>BufferPickDelete<cr>";
-        silent = true;
-        desc = "Pick Buffer to Close";
-      };
-      "<leader>c" = {
+        options = {
+          silent = true;
+          desc = "Pick Buffer to Close";
+        };
+      }
+      {
+        key = "<leader>c";
+        mode = ["n"];
         action = "<cmd>BufferClose<cr>";
-        silent = true;
-        desc = "Close Buffer";
-      };
-    };
+        options = {
+          silent = true;
+          desc = "Close Buffer";
+        };
+      }
+    ];
   };
 }

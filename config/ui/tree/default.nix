@@ -65,12 +65,18 @@
         followCurrentFile.enabled = true;
       };
     };
-    maps.normal = {
-      "<leader>e" = {
+    keymaps = [
+      {
+        key = "<leader>e";
+        mode = ["n" "v"];
         action = "<cmd>Neotree toggle<cr>";
-        desc = "Neotree toggle";
-      };
-      "<leader>o" = {
+        options = {
+          desc = "Neotree toggle";
+        };
+      }
+      {
+        key = "<leader>o";
+        mode = ["n" "v"];
         action = ''
           function()
             if vim.bo.filetype == "neo-tree" then
@@ -81,8 +87,10 @@
           end
         '';
         lua = true;
-        desc = "Neotree toggle focus";
-      };
-    };
+        options = {
+          desc = "Neotree toggle focus";
+        };
+      }
+    ];
   };
 }

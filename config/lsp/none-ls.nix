@@ -1,5 +1,5 @@
 {...}: {
-  config.plugins.null-ls = {
+  config.plugins.none-ls = {
     enable = true;
     cmd = ["bash -c nvim"];
     debug = true;

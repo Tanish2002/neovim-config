@@ -79,41 +79,60 @@
         bg = helpers.mkRaw "colors.crust";
       };
     };
-    maps.normal = {
-      "<leader>f" = {
-        desc = " Files";
-      };
-      "<leader>f<cr>" = {
+    keymaps = [
+      {
+        key = "<leader>f<cr>";
+        mode = ["n" "v"];
         action = ''function() require("telescope.builtin").resume() end'';
         lua = true;
-        silent = true;
-        desc = "Resume previous search";
-      };
-      "<leader><leader>" = {
+        options = {
+          silent = true;
+          desc = "Resume previous search";
+        };
+      }
+      {
+        key = "<leader><leader>";
+        mode = ["n" "v"];
         action = ''function() require("telescope.builtin").find_files() end'';
         lua = true;
-        silent = true;
-        desc = "Find Files";
-      };
-      "<leader>ff" = {
+        options = {
+          silent = true;
+          desc = "Find Files";
+        };
+      }
+      {
+        key = "<leader>ff";
+        mode = ["n" "v"];
         action = ''function() require("telescope.builtin").find_files() end'';
         lua = true;
-        silent = true;
-        desc = "Find Files";
-      };
-      "<leader>fF" = {
+        options = {
+          silent = true;
+          desc = "Find Files";
+        };
+      }
+      {
+        key = "<leader>fF";
+        mode = ["n" "v"];
         action = ''function() require("telescope.builtin").find_files { hidden = true, no_ignore = true } end'';
         lua = true;
-        silent = true;
-        desc = "Find all Files";
-      };
-      "<leader>fw" = {
+        options = {
+          silent = true;
+          desc = "Find all Files";
+        };
+      }
+      {
+        key = "<leader>fw";
+        mode = ["n" "v"];
         action = ''function() require("telescope.builtin").live_grep() end'';
         lua = true;
-        silent = true;
-        desc = "Find Words";
-      };
-      "<leader>fW" = {
+        options = {
+          silent = true;
+          desc = "Find Words";
+        };
+      }
+      {
+        key = "<leader>fW";
+        mode = ["n" "v"];
         action = ''
           function()
             require("telescope.builtin").live_grep {
@@ -122,93 +141,141 @@
           end
         '';
         lua = true;
-        silent = true;
-        desc = "Find Words";
-      };
-      "<leader>fb" = {
+        options = {
+          silent = true;
+          desc = "Find Words";
+        };
+      }
+      {
+        key = "<leader>fb";
+        mode = ["n" "v"];
         action = ''function() require("telescope.builtin").buffers() end'';
         lua = true;
-        silent = true;
-        desc = "Find Buffers";
-      };
-      "<leader>fc" = {
+        options = {
+          silent = true;
+          desc = "Find Buffers";
+        };
+      }
+      {
+        key = "<leader>fc";
+        mode = ["n" "v"];
         action = ''function() require("telescope.builtin").grep_string() end'';
         lua = true;
-        silent = true;
-        desc = "Find word under Cursor";
-      };
-      "<leader>fC" = {
+        options = {
+          silent = true;
+          desc = "Find word under Cursor";
+        };
+      }
+      {
+        key = "<leader>fC";
+        mode = ["n" "v"];
         action = ''function() require("telescope.builtin").commands() end'';
         lua = true;
-        silent = true;
-        desc = "Find Commands";
-      };
-      "<leader>fk" = {
+        options = {
+          silent = true;
+          desc = "Find Commands";
+        };
+      }
+      {
+        key = "<leader>fk";
+        mode = ["n" "v"];
         action = ''function() require("telescope.builtin").keymaps() end'';
         lua = true;
-        silent = true;
-        desc = "Find keymaps";
-      };
-      "<leader>ft" = {
+        options = {
+          silent = true;
+          desc = "Find keymaps";
+        };
+      }
+      {
+        key = "<leader>ft";
+        mode = ["n" "v"];
         action = ''function() require("telescope.builtin").colorscheme { enable_preview = true } end'';
         lua = true;
-        silent = true;
-        desc = "Find themes";
-      };
-      "<leader>fn" = {
+        options = {
+          silent = true;
+          desc = "Find themes";
+        };
+      }
+      {
+        key = "<leader>fn";
+        mode = ["n" "v"];
         action = ''function() require("telescope").extensions.notify.notify() end'';
         lua = true;
-        silent = true;
-        desc = "Find notfications";
-      };
-      "<leader>fp" = {
+        options = {
+          silent = true;
+          desc = "Find notifications";
+        };
+      }
+      {
+        key = "<leader>fp";
+        mode = ["n" "v"];
         action = "<cmd>Telescope projects<cr>";
-        silent = true;
-        desc = "Find projects";
-      };
-      "<leader>g" = {
-        desc = " Git";
-      };
-      "<leader>gb" = {
+        options = {
+          silent = true;
+          desc = "Find projects";
+        };
+      }
+      {
+        key = "<leader>gb";
+        mode = ["n" "v"];
         action = ''function() require("telescope.builtin").git_branches() end'';
         lua = true;
-        silent = true;
-        desc = "Git branches";
-      };
-      "<leader>gc" = {
+        options = {
+          silent = true;
+          desc = "Git branches";
+        };
+      }
+      {
+        key = "<leader>gc";
+        mode = ["n" "v"];
         action = ''function() require("telescope.builtin").git_commits() end'';
         lua = true;
-        silent = true;
-        desc = "Git commits";
-      };
-      "<leader>gt" = {
+        options = {
+          silent = true;
+          desc = "Git commits";
+        };
+      }
+      {
+        key = "<leader>gt";
+        mode = ["n" "v"];
         action = ''function() require("telescope.builtin").git_status() end'';
         lua = true;
-        silent = true;
-        desc = "Git status";
-      };
-      "<leader>l" = {
-        desc = " LSP";
-      };
-      "<leader>lD" = {
+        options = {
+          silent = true;
+          desc = "Git status";
+        };
+      }
+      {
+        key = "<leader>lD";
+        mode = ["n" "v"];
         action = ''function() require("telescope.builtin").diagnostics() end'';
         lua = true;
-        silent = true;
-        desc = "Search diagnostics";
-      };
-      "<leader>ls" = {
+        options = {
+          silent = true;
+          desc = "Search diagnostics";
+        };
+      }
+      {
+        key = "<leader>ls";
+        mode = ["n" "v"];
         action = ''function() require("telescope.builtin").lsp_document_symbols() end'';
         lua = true;
-        silent = true;
-        desc = "Search symbols";
-      };
-      "<leader>," = {
+        options = {
+          silent = true;
+          desc = "Search symbols";
+        };
+      }
+      {
+        key = "<leader>,";
+        mode = ["n" "v"];
         action = ''function() require("telescope.builtin").buffers() end'';
         lua = true;
-        silent = true;
-        desc = "Switch Buffers";
-      };
-    };
+        options = {
+          silent = true;
+          desc = "Switch Buffers";
+        };
+      }
+    ];
     extraPlugins = with pkgs.vimPlugins; [project-nvim];
   };
 }

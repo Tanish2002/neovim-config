@@ -6,5 +6,12 @@
       group = "";
       separator = "";
     };
+    registrations = {
+      "<leader>g" = " Git";
+      "<leader>f" = " Files";
+      "<leader>b" = " Buffer";
+      "<leader>t" = " Terminal";
+      "<leader>l" = " LSP";
+    };
   };
 }

@@ -37,37 +37,55 @@
         command = "lua vim.lsp.buf.format({async = true})";
       }
     ];
-    maps = {
-      normal = {
-        "<leader>/" = {
-          action = ''function() require("Comment.api").toggle.linewise.count(vim.v.count > 0 and vim.v.count or 1) end'';
+    keymaps = [
+      {
+        key = "<leader>/";
+        mode = ["n"];
+        action = ''function() require("Comment.api").toggle.linewise.count(vim.v.count > 0 and vim.v.count or 1) end'';
+        lua = true;
+        options = {
           silent = true;
-          lua = true;
           desc = "Comment line";
         };
-        "<leader>w" = {
-          action = "<cmd>write<cr>";
+      }
+
+      {
+        key = "<leader>w";
+        mode = ["n"];
+        action = "<cmd>write<cr>";
+        options = {
           silent = true;
           desc = "Write";
         };
-        "<leader>q" = {
-          action = "<cmd>quit<cr>";
+      }
+
+      {
+        key = "<leader>q";
+        mode = ["n"];
+        action = "<cmd>quit<cr>";
+        options = {
           silent = true;
           desc = "Quit";
         };
-        "<leader>Q" = {
-          action = "<cmd>quit!<cr>";
+      }
+      {
+        key = "<leader>Q";
+        mode = ["n"];
+        action = "<cmd>quit!<cr>";
+        options = {
           silent = true;
           desc = "Force Quit";
         };
-      };
-      visual = {
-        "<leader>/" = {
-          action = "<esc><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<cr>";
+      }
+      {
+        key = "<leader>/";
+        mode = ["v"];
+        action = "<esc><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<cr>";
+        options = {
           silent = true;
           desc = "Comment line";
         };
-      };
-    };
+      }
+    ];
   };
 }

@@ -41,12 +41,15 @@
       alpha.setup(dashboard.config)
     '';
 
-    maps.normal = {
-      "<leader>h" = {
+    keymaps = [
+      {
+        key = "<leader>h";
         action = "<cmd>Alpha<cr>";
-        silent = true;
-        desc = "Home Page";
-      };
-    };
+        options = {
+          silent = true;
+          desc = "Home Page";
+        };
+      }
+    ];
   };
 }
