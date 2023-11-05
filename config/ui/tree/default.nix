@@ -57,12 +57,12 @@
       window.width = 30;
       filesystem = {
         bindToCwd = true;
-        followCurrentFile = true;
+        followCurrentFile.enabled = true;
         useLibuvFileWatcher = true;
       };
       buffers = {
         bindToCwd = true;
-        followCurrentFile = true;
+        followCurrentFile.enabled = true;
       };
     };
     maps.normal = {

@@ -1,6 +1,6 @@
 _: {
-  imports = [./tree ./dashboard ./bufferline ./statusline ./notifications];
+  imports = [./tree ./dashboard ./bufferline ./statusline];
   plugins.noice = {
-    enable = false;
+    enable = true;
   };
 }

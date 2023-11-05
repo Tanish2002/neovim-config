@@ -21,12 +21,14 @@
           "html"
           "astro"
           "javascript"
+          "python"
         ];
         folding = true;
         indent = true;
         nixGrammars = true;
         nixvimInjections = true;
       };
+      ts-autotag.enable = true;
       project-nvim.enable = true;
     };
     globals.mapleader = " "; # Sets the leader key to space
@@ -59,6 +61,8 @@
       undofile = true;
       virtualedit = "block";
       wrap = false;
+      titlestring = "neovim";
+      title = true;
     };
     globals = {
       # neovide_padding_top = 50;

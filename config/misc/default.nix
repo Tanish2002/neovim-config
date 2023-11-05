@@ -16,12 +16,16 @@
         userDefaultOptions = {
           tailwind = true;
           sass.enable = true;
+          css = true;
         };
       };
       presence-nvim = {
         enable = true;
         enableLineNumber = true;
       };
+      surround.enable = true;
+      # hardtime.enable = true;
+      leap.enable = true;
     };
     autoCmd = [
       {
@@ -30,7 +34,7 @@
       }
       {
         event = ["BufWritePre"];
-        command = "lua vim.lsp.buf.format()";
+        command = "lua vim.lsp.buf.format({async = true})";
       }
     ];
     maps = {
