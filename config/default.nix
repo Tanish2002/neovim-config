@@ -1,5 +1,5 @@
 {...}: {
-  imports = [./lsp ./misc ./telescope ./which-key ./ui];
+  imports = [./lsp ./misc ./telescope ./which-key ./ui ./tmux];
   config = {
     colorschemes.catppuccin = {
       enable = true;
@@ -30,6 +30,7 @@
       };
       ts-autotag.enable = true;
       project-nvim.enable = true;
+      auto-session.enable = true;
     };
     globals.mapleader = " "; # Sets the leader key to space
     options = {
@@ -63,12 +64,8 @@
       wrap = false;
       titlestring = "neovim";
       title = true;
-    };
-    globals = {
-      # neovide_padding_top = 50;
-      # neovide_padding_bottom = 50;
-      # neovide_padding_right = 50;
-      # neovide_padding_left = 50;
+      splitbelow = true;
+      splitright = true;
     };
   };
 }

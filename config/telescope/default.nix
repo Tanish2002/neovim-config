@@ -10,6 +10,7 @@
       extensions.project-nvim.enable = true;
       extraOptions = {
         pickers.colorscheme.enable_preview = true;
+        file_ignore_patterns = ["node_modules"];
       };
       defaults = {
         prompt_prefix = " ";

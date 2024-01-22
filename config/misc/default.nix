@@ -38,6 +38,7 @@
       }
     ];
     keymaps = [
+      # Comment Line
       {
         key = "<leader>/";
         mode = ["n"];
@@ -48,7 +49,16 @@
           desc = "Comment line";
         };
       }
-
+      {
+        key = "<leader>/";
+        mode = ["v"];
+        action = "<esc><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<cr>";
+        options = {
+          silent = true;
+          desc = "Comment line";
+        };
+      }
+      # Quality of life changes
       {
         key = "<leader>w";
         mode = ["n"];
@@ -78,12 +88,57 @@
         };
       }
       {
-        key = "<leader>/";
-        mode = ["v"];
-        action = "<esc><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<cr>";
+        key = "E";
+        mode = ["n"];
+        action = "$";
+        options = {
+          noremap = true;
+        };
+      }
+      {
+        key = "B";
+        mode = ["n"];
+        action = "^";
+        options = {
+          noremap = true;
+        };
+      }
+      # Splits
+      {
+        key = "<c-w>,";
+        mode = ["n"];
+        action = ":vertical resize -10<CR>";
         options = {
           silent = true;
-          desc = "Comment line";
+          noremap = true;
+        };
+      }
+      {
+        key = "<c-w>.";
+        mode = ["n"];
+        action = ":vertical resize +10<CR>";
+        options = {
+          silent = true;
+          noremap = true;
+        };
+      }
+      # Word wrap things
+      {
+        key = "k";
+        mode = ["n"];
+        action = "v:count == 0 ? 'gk' : 'k'";
+        options = {
+          silent = true;
+          expr = true;
+        };
+      }
+      {
+        key = "j";
+        mode = ["n"];
+        action = "v:count == 0 ? 'gj' : 'j'";
+        options = {
+          silent = true;
+          expr = true;
         };
       }
     ];

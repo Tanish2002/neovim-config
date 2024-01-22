@@ -12,7 +12,11 @@
         servers = {
           gopls.enable = true;
           nil_ls.enable = true;
-          rust-analyzer.enable = true;
+          rust-analyzer = {
+            enable = true;
+            installCargo = true;
+            installRustc = true;
+          };
           tsserver.enable = true;
           tailwindcss.enable = true;
           cssls.enable = true;
@@ -28,7 +32,9 @@
             };
           };
           omnisharp.enable = true;
+          ruff-lsp.enable = true;
           pyright.enable = true;
+          elixirls.enable = true;
         };
       };
       # LSP saga
