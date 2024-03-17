@@ -6,6 +6,8 @@
   imports = [./none-ls.nix ./nvim-cmp.nix];
   config = {
     plugins = {
+      #LSP Formatting
+      lsp-format.enable = true;
       # Native LSP
       lsp = {
         enable = true;
@@ -18,6 +20,7 @@
             installRustc = true;
           };
           tsserver.enable = true;
+          biome.enable = true;
           tailwindcss.enable = true;
           cssls.enable = true;
           astro.enable = true;
@@ -35,6 +38,8 @@
           ruff-lsp.enable = true;
           pyright.enable = true;
           elixirls.enable = true;
+          dartls.enable = true;
+          java-language-server.enable = true;
         };
       };
       # LSP saga
@@ -43,7 +48,7 @@
       # Emmet
       emmet = {
         enable = true;
-        leader = "<c-z>";
+        settings.leader_key = "<c-z>";
       };
     };
     # LSP Mappings

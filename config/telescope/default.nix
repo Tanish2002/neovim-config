@@ -1,38 +1,36 @@
-{
-  pkgs,
-  helpers,
-  ...
-}: {
+{ helpers, ... }: {
   config = {
-    plugins.telescope = {
-      enable = true;
-      extensions.frecency.enable = true;
-      extensions.project-nvim.enable = true;
-      extraOptions = {
-        pickers.colorscheme.enable_preview = true;
-        file_ignore_patterns = ["node_modules"];
-      };
-      defaults = {
-        prompt_prefix = " ";
-        selection_caret = "❯ ";
-        path_display = [
-          "truncate"
-        ];
-        sorting_strategy = "ascending";
-        layout_config = {
-          horizontal = {
-            prompt_position = "top";
-            preview_width = 0.55;
+    plugins = {
+      telescope = {
+        enable = true;
+        extraOptions = {
+          pickers.colorscheme.enable_preview = true;
+          file_ignore_patterns = [ "node_modules" ];
+        };
+        defaults = {
+          prompt_prefix = " ";
+          selection_caret = "❯ ";
+          path_display = [
+            "truncate"
+          ];
+          sorting_strategy = "ascending";
+          layout_config = {
+            horizontal = {
+              prompt_position = "top";
+              preview_width = 0.55;
+            };
+            vertical = {
+              mirror = false;
+            };
+            width = 0.87;
+            height = 0.80;
+            preview_cutoff = 120;
           };
-          vertical = {
-            mirror = false;
-          };
-          width = 0.87;
-          height = 0.80;
-          preview_cutoff = 120;
         };
       };
+      project-nvim.enableTelescope = true;
     };
+
     colorschemes.catppuccin.customHighlights = {
       TelescopeBorder = {
         fg = helpers.mkRaw "colors.mantle";
@@ -83,7 +81,7 @@
     keymaps = [
       {
         key = "<leader>f<cr>";
-        mode = ["n" "v"];
+        mode = [ "n" "v" ];
         action = ''function() require("telescope.builtin").resume() end'';
         lua = true;
         options = {
@@ -93,7 +91,7 @@
       }
       {
         key = "<leader><leader>";
-        mode = ["n" "v"];
+        mode = [ "n" "v" ];
         action = ''function() require("telescope.builtin").find_files() end'';
         lua = true;
         options = {
@@ -103,7 +101,7 @@
       }
       {
         key = "<leader>ff";
-        mode = ["n" "v"];
+        mode = [ "n" "v" ];
         action = ''function() require("telescope.builtin").find_files() end'';
         lua = true;
         options = {
@@ -113,7 +111,7 @@
       }
       {
         key = "<leader>fF";
-        mode = ["n" "v"];
+        mode = [ "n" "v" ];
         action = ''function() require("telescope.builtin").find_files { hidden = true, no_ignore = true } end'';
         lua = true;
         options = {
@@ -123,7 +121,7 @@
       }
       {
         key = "<leader>fw";
-        mode = ["n" "v"];
+        mode = [ "n" "v" ];
         action = ''function() require("telescope.builtin").live_grep() end'';
         lua = true;
         options = {
@@ -133,7 +131,7 @@
       }
       {
         key = "<leader>fW";
-        mode = ["n" "v"];
+        mode = [ "n" "v" ];
         action = ''
           function()
             require("telescope.builtin").live_grep {
@@ -149,7 +147,7 @@
       }
       {
         key = "<leader>fb";
-        mode = ["n" "v"];
+        mode = [ "n" "v" ];
         action = ''function() require("telescope.builtin").buffers() end'';
         lua = true;
         options = {
@@ -159,7 +157,7 @@
       }
       {
         key = "<leader>fc";
-        mode = ["n" "v"];
+        mode = [ "n" "v" ];
         action = ''function() require("telescope.builtin").grep_string() end'';
         lua = true;
         options = {
@@ -169,7 +167,7 @@
       }
       {
         key = "<leader>fC";
-        mode = ["n" "v"];
+        mode = [ "n" "v" ];
         action = ''function() require("telescope.builtin").commands() end'';
         lua = true;
         options = {
@@ -179,7 +177,7 @@
       }
       {
         key = "<leader>fk";
-        mode = ["n" "v"];
+        mode = [ "n" "v" ];
         action = ''function() require("telescope.builtin").keymaps() end'';
         lua = true;
         options = {
@@ -189,7 +187,7 @@
       }
       {
         key = "<leader>ft";
-        mode = ["n" "v"];
+        mode = [ "n" "v" ];
         action = ''function() require("telescope.builtin").colorscheme { enable_preview = true } end'';
         lua = true;
         options = {
@@ -199,7 +197,7 @@
       }
       {
         key = "<leader>fn";
-        mode = ["n" "v"];
+        mode = [ "n" "v" ];
         action = ''function() require("telescope").extensions.notify.notify() end'';
         lua = true;
         options = {
@@ -209,7 +207,7 @@
       }
       {
         key = "<leader>fp";
-        mode = ["n" "v"];
+        mode = [ "n" "v" ];
         action = "<cmd>Telescope projects<cr>";
         options = {
           silent = true;
@@ -218,7 +216,7 @@
       }
       {
         key = "<leader>gb";
-        mode = ["n" "v"];
+        mode = [ "n" "v" ];
         action = ''function() require("telescope.builtin").git_branches() end'';
         lua = true;
         options = {
@@ -228,7 +226,7 @@
       }
       {
         key = "<leader>gc";
-        mode = ["n" "v"];
+        mode = [ "n" "v" ];
         action = ''function() require("telescope.builtin").git_commits() end'';
         lua = true;
         options = {
@@ -238,7 +236,7 @@
       }
       {
         key = "<leader>gt";
-        mode = ["n" "v"];
+        mode = [ "n" "v" ];
         action = ''function() require("telescope.builtin").git_status() end'';
         lua = true;
         options = {
@@ -248,7 +246,7 @@
       }
       {
         key = "<leader>lD";
-        mode = ["n" "v"];
+        mode = [ "n" "v" ];
         action = ''function() require("telescope.builtin").diagnostics() end'';
         lua = true;
         options = {
@@ -258,7 +256,7 @@
       }
       {
         key = "<leader>ls";
-        mode = ["n" "v"];
+        mode = [ "n" "v" ];
         action = ''function() require("telescope.builtin").lsp_document_symbols() end'';
         lua = true;
         options = {
@@ -268,7 +266,7 @@
       }
       {
         key = "<leader>,";
-        mode = ["n" "v"];
+        mode = [ "n" "v" ];
         action = ''function() require("telescope.builtin").buffers() end'';
         lua = true;
         options = {
@@ -277,6 +275,5 @@
         };
       }
     ];
-    extraPlugins = with pkgs.vimPlugins; [project-nvim];
   };
 }

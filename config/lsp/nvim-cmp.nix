@@ -1,7 +1,6 @@
-{
-  pkgs,
-  helpers,
-  ...
+{ pkgs
+, helpers
+, ...
 }: {
   # nvim-cmp
   config = {
@@ -16,16 +15,8 @@
     plugins = {
       luasnip = {
         enable = true;
-        fromVscode = [{}];
+        fromVscode = [{ }];
       };
-      cmp-emoji.enable = true;
-      cmp-nvim-lsp.enable = true;
-      cmp-nvim-lsp-document-symbol.enable = true;
-      cmp-nvim-lsp-signature-help.enable = true;
-      cmp-nvim-lua.enable = true;
-      # cmp-nvim-ultisnips.enable = true;
-      cmp_luasnip.enable = true;
-      cmp-path.enable = true;
 
       lspkind = {
         enable = true;
@@ -43,42 +34,49 @@
           '';
         };
       };
-      nvim-cmp = {
+      cmp-emoji.enable = true;
+      cmp-nvim-lsp.enable = true;
+      cmp-nvim-lsp-document-symbol.enable = true;
+      cmp-nvim-lsp-signature-help.enable = true;
+      cmp-nvim-lua.enable = true;
+      cmp_luasnip.enable = true;
+      cmp-path.enable = true;
+      cmp-buffer.enable = true;
+      cmp = {
         enable = true;
-        # snippet.expand = "ultisnips";
-        snippet.expand = "luasnip";
-        sources = [
-          {name = "nvim_lsp";}
-          {name = "nvim_lsp_document_symbol";}
-          {name = "nvim_lsp_signature_help";}
-          # {name = "ultisnips";}
-          {name = "luasnip";}
-          {name = "path";}
-          {name = "buffer";}
-          {name = "emoji";}
-        ];
-        window = {
-          documentation.maxHeight = "math.floor(40 * (40 / vim.o.lines))";
-          completion = {
-            winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,Search:None";
-            colOffset = -3;
-            sidePadding = 0;
+        autoEnableSources = true;
+        settings = {
+          snippet.expand = ''
+            function(args)
+              require('luasnip').lsp_expand(args.body)
+            end
+          '';
+          sources = [
+            { name = "nvim_lsp"; }
+            { name = "nvim_lsp_document_symbol"; }
+            { name = "nvim_lsp_signature_help"; }
+            { name = "luasnip"; }
+            { name = "path"; }
+            { name = "buffer"; }
+            { name = "emoji"; }
+          ];
+          window = {
+            documentation.max_height = "math.floor(40 * (40 / vim.o.lines))";
+            completion = {
+              winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,Search:None";
+              col_offset = -3;
+              side_padding = 0;
+            };
           };
-        };
-
-        formatting = {
-          fields = ["kind" "abbr" "menu"];
-        };
-        mapping = {
-          "<CR>" = "cmp.mapping.confirm({ select = true })";
-          "<Tab>" = {
-            modes = ["i" "s"];
-            action = ''
-              function(fallback)
+          formatting = {
+            fields = [ "kind" "abbr" "menu" ];
+          };
+          mapping = {
+            "<CR>" = "cmp.mapping.confirm({ select = true })";
+            "<Tab>" = ''
+              cmp.mapping(function(fallback)
                 if cmp.visible() then
                   cmp.select_next_item()
-                -- You could replace the expand_or_jumpable() calls with expand_or_locally_jumpable()
-                -- they way you will only jump inside the snippet region
                 elseif require("luasnip").expand_or_locally_jumpable() then
                   require("luasnip").expand_or_jump()
                 elseif has_words_before() then
@@ -86,13 +84,10 @@
                 else
                   fallback()
                 end
-              end
+              end, { "i", "s" })
             '';
-          };
-          "<S-Tab>" = {
-            modes = ["i" "s"];
-            action = ''
-              function(fallback)
+            "<S-Tab>" = ''
+              cmp.mapping(function(fallback)
                 if cmp.visible() then
                   cmp.select_prev_item()
                 elseif require("luasnip").jumpable(-1) then
@@ -100,26 +95,24 @@
                 else
                   fallback()
                 end
-              end
+              end, { "i", "s" })
             '';
+            "<C-Space>" = "cmp.mapping.complete()";
+            "<C-e>" = "cmp.mapping.abort()";
+            "<Up>" = "cmp.mapping.select_prev_item()";
+            "<Down>" = "cmp.mapping.select_next_item()";
+            "<C-p>" = "cmp.mapping.select_prev_item()";
+            "<C-n>" = "cmp.mapping.select_next_item()";
+            "<C-u>" = "cmp.mapping.scroll_docs(-4)";
+            "<C-d>" = "cmp.mapping.scroll_docs(4)";
           };
-          "<C-Space>" = "cmp.mapping.complete()";
-          "<C-e>" = "cmp.mapping.abort()";
-          "<Up>" = "cmp.mapping.select_prev_item()";
-          "<Down>" = "cmp.mapping.select_next_item()";
-          "<C-p>" = "cmp.mapping.select_prev_item()";
-          "<C-n>" = "cmp.mapping.select_next_item()";
-          "<C-u>" = "cmp.mapping.scroll_docs(-4)";
-          "<C-d>" = "cmp.mapping.scroll_docs(4)";
         };
       };
     };
-
     # Snippets
+    plugins.friendly-snippets.enable = true;
     extraPlugins = with pkgs.vimPlugins; [
       vim-snippets
-      friendly-snippets
-      # ultisnips
     ];
 
     # Highlights for custom theme

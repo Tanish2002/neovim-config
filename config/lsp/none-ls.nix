@@ -28,10 +28,10 @@
         stylua.enable = true;
         shfmt.enable = true;
         nixpkgs_fmt.enable = true;
-        prettier = {
-          enable = true;
-          disableTsServerFormatter = true;
-        };
+        # prettier = {
+        #   enable = true;
+        #   disableTsServerFormatter = true;
+        # };
         # black.enable = true;
       };
     };

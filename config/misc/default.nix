@@ -32,10 +32,10 @@
         event = ["TextYankPost"];
         command = "lua vim.highlight.on_yank()";
       }
-      {
-        event = ["BufWritePre"];
-        command = "lua vim.lsp.buf.format({async = true})";
-      }
+      # {
+      #   event = ["BufWritePre"];
+      #   command = "lua vim.lsp.buf.format({async = true})";
+      # }
     ];
     keymaps = [
       # Comment Line

@@ -3,14 +3,15 @@ _: {
     plugins = {
       toggleterm = {
         enable = true;
-        openMapping = "<c-\\>";
+        # I already use tmux so.. I rarely use this but useful in a non tmux session
+        openMapping = "<c-t>";
       };
     };
 
     keymaps = [
       {
         key = "<leader>tf";
-        mode = ["n"];
+        mode = [ "n" ];
         action = "<cmd>ToggleTerm direction=float<cr>";
         options = {
           silent = true;
@@ -19,7 +20,7 @@ _: {
       }
       {
         key = "<leader>th";
-        mode = ["n"];
+        mode = [ "n" ];
         action = "<cmd>ToggleTerm size=10 direction=horizontal<cr>";
         options = {
           silent = true;
@@ -28,7 +29,7 @@ _: {
       }
       {
         key = "<leader>tv";
-        mode = ["n"];
+        mode = [ "n" ];
         action = "<cmd>ToggleTerm size=80 direction=vertical<cr>";
         options = {
           silent = true;
@@ -36,8 +37,8 @@ _: {
         };
       }
       {
-        key = "<c-\\>";
-        mode = ["n"];
+        key = "<c-t>";
+        mode = [ "n" ];
         action = "<cmd>ToggleTerm<cr>";
         options = {
           silent = true;
