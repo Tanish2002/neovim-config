@@ -1,7 +1,7 @@
-{...}: {
+_: {
   config.plugins.none-ls = {
     enable = true;
-    cmd = ["bash -c nvim"];
+    cmd = [ "bash -c nvim" ];
     debug = true;
     sources = {
       code_actions = {
@@ -28,10 +28,9 @@
         stylua.enable = true;
         shfmt.enable = true;
         nixpkgs_fmt.enable = true;
-        # prettier = {
-        #   enable = true;
-        #   disableTsServerFormatter = true;
-        # };
+        # prettier.enable = true;
+        # prettier.disableTsServerFormatter = true;
+        # biome.enable = true;
         # black.enable = true;
       };
     };

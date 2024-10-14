@@ -1,7 +1,7 @@
-{...}: {
+_: {
   config.plugins.which-key = {
     enable = true;
-    disable.filetypes = ["TelescopePrompt"];
+    disable.filetypes = [ "TelescopePrompt" ];
     icons = {
       group = "";
       separator = "";

@@ -1,11 +1,21 @@
-{...}: {
-  imports = [./lsp ./misc ./telescope ./which-key ./ui ./tmux];
+{ pkgs, ... }: {
+  imports = [ ./lsp ./misc ./telescope ./which-key ./ui ./tmux ./nvim-dap ];
   config = {
     colorschemes.catppuccin = {
       enable = true;
-      terminalColors = true;
-      disableItalic = false;
-      disableBold = false;
+      settings = {
+        term_colors = true;
+        no_italic = false;
+        no_bold = false;
+        settings.integrations = {
+          barbecue = {
+            dim_dirname = true;
+            bold_basename = true;
+            dim_context = false;
+            alt_background = false;
+          };
+        };
+      };
     };
     luaLoader.enable = true;
     plugins = {
@@ -21,19 +31,54 @@
           "html"
           "astro"
           "javascript"
-          "python"
+          "typescript"
+          "tsx"
+          "json"
+          "json5"
+          "lua"
+          "markdown"
+          "markdown_inline"
+        ];
+        grammarPackages = with pkgs.vimPlugins.nvim-treesitter.builtGrammars; [
+          go
+          rust
+          nix
+          lua
+          haskell
+          java
+          html
+          astro
+          javascript
+          typescript
+          tsx
+          json
+          json5
+          markdown
+          markdown-inline
+          vim
+          regex
+          bash
+          html
         ];
         folding = true;
         indent = true;
         nixGrammars = true;
         nixvimInjections = true;
       };
+      vim-matchup = {
+        enable = true;
+        treesitterIntegration.enable = true;
+      };
       ts-autotag.enable = true;
       project-nvim.enable = true;
       auto-session.enable = true;
+      barbecue = {
+        enable = true;
+        theme = "catppuccin";
+      };
     };
     globals.mapleader = " "; # Sets the leader key to space
-    options = {
+    opts = {
       number = true; # Show line numbers
       relativenumber = true; # Show relative line numbers
       guifont = "Iosevka Nerd Font Mono:h8";
@@ -41,7 +86,17 @@
       timeout = true;
       timeoutlen = 300;
       smarttab = true;
-      foldenable = false;
+      foldenable = true;
+      foldcolumn = "1";
+      fillchars = {
+        eob = " ";
+        fold = " ";
+        foldopen = "";
+        foldsep = " ";
+        foldclose = "";
+      };
+      foldlevel = 99;
+      foldlevelstart = 99;
       tabstop = 2;
       shiftwidth = 2;
       autoindent = true;

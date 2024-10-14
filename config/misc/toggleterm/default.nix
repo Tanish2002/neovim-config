@@ -4,7 +4,7 @@ _: {
       toggleterm = {
         enable = true;
         # I already use tmux so.. I rarely use this but useful in a non tmux session
-        openMapping = "<c-t>";
+        settings.open_mapping = "[[<c-t]]";
       };
     };
 

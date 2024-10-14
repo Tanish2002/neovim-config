@@ -116,120 +116,169 @@
     ];
 
     # Highlights for custom theme
-    colorschemes.catppuccin.customHighlights = {
-      PmenuSel = {
-        bg = helpers.mkRaw "colors.base";
-        fg = "NONE";
-      };
-      Pmenu = {
-        fg = helpers.mkRaw "colors.crust";
-        bg = helpers.mkRaw "colors.mantle";
-      };
-      CmpItemKindSnippet = {
-        bg = helpers.mkRaw "colors.mauve";
-        fg = helpers.mkRaw "colors.crust";
-      };
-      CmpItemKindKeyword = {
-        bg = helpers.mkRaw "colors.red";
-        fg = helpers.mkRaw "colors.crust";
-      };
-
-      CmpItemKindText = {
-        bg = helpers.mkRaw "colors.teal";
-        fg = helpers.mkRaw "colors.crust";
-      };
-      CmpItemKindMethod = {
-        bg = helpers.mkRaw "colors.blue";
-        fg = helpers.mkRaw "colors.crust";
-      };
-      CmpItemKindConstructor = {
-        bg = helpers.mkRaw "colors.blue";
-        fg = helpers.mkRaw "colors.crust";
-      };
-      CmpItemKindFunction = {
-        bg = helpers.mkRaw "colors.blue";
-        fg = helpers.mkRaw "colors.crust";
-      };
-      CmpItemKindFolder = {
-        bg = helpers.mkRaw "colors.blue";
-        fg = helpers.mkRaw "colors.crust";
-      };
-      CmpItemKindModule = {
-        bg = helpers.mkRaw "colors.blue";
-        fg = helpers.mkRaw "colors.crust";
-      };
-      CmpItemKindConstant = {
-        bg = helpers.mkRaw "colors.peach";
-        fg = helpers.mkRaw "colors.crust";
-      };
-      CmpItemKindField = {
-        bg = helpers.mkRaw "colors.green";
-        fg = helpers.mkRaw "colors.crust";
-      };
-      CmpItemKindProperty = {
-        bg = helpers.mkRaw "colors.green";
-        fg = helpers.mkRaw "colors.crust";
-      };
-      CmpItemKindEnum = {
-        bg = helpers.mkRaw "colors.green";
-        fg = helpers.mkRaw "colors.crust";
-      };
-      CmpItemKindUnit = {
-        bg = helpers.mkRaw "colors.green";
-        fg = helpers.mkRaw "colors.crust";
-      };
-      CmpItemKindClass = {
-        bg = helpers.mkRaw "colors.yellow";
-        fg = helpers.mkRaw "colors.crust";
-      };
-      CmpItemKindVariable = {
-        bg = helpers.mkRaw "colors.red";
-        fg = helpers.mkRaw "colors.crust";
-      };
-      CmpItemKindFile = {
-        bg = helpers.mkRaw "colors.blue";
-        fg = helpers.mkRaw "colors.crust";
-      };
-      CmpItemKindInterface = {
-        bg = helpers.mkRaw "colors.yellow";
-        fg = helpers.mkRaw "colors.crust";
-      };
-      CmpItemKindColor = {
-        bg = helpers.mkRaw "colors.red";
-        fg = helpers.mkRaw "colors.crust";
-      };
-      CmpItemKindReference = {
-        bg = helpers.mkRaw "colors.red";
-        fg = helpers.mkRaw "colors.crust";
-      };
-      CmpItemKindEnumMember = {
-        bg = helpers.mkRaw "colors.red";
-        fg = helpers.mkRaw "colors.crust";
-      };
-      CmpItemKindStruct = {
-        bg = helpers.mkRaw "colors.blue";
-        fg = helpers.mkRaw "colors.crust";
-      };
-      CmpItemKindValue = {
-        bg = helpers.mkRaw "colors.peach";
-        fg = helpers.mkRaw "colors.crust";
-      };
-      CmpItemKindEvent = {
-        bg = helpers.mkRaw "colors.blue";
-        fg = helpers.mkRaw "colors.crust";
-      };
-      CmpItemKindOperator = {
-        bg = helpers.mkRaw "colors.blue";
-        fg = helpers.mkRaw "colors.crust";
-      };
-      CmpItemKindTypeParameter = {
-        bg = helpers.mkRaw "colors.blue";
-        fg = helpers.mkRaw "colors.crust";
-      };
-      CmpItemKindCopilot = {
-        bg = helpers.mkRaw "colors.teal";
-        fg = helpers.mkRaw "colors.crust";
-      };
-    };
+    colorschemes.catppuccin.settings.custom_highlights = ''
+      function(colors)
+        return
+          ${helpers.toLuaObject {
+        TelescopeBorder = {
+          fg = helpers.mkRaw "colors.mantle";
+          bg = helpers.mkRaw "colors.crust";
+        };
+        TelescopeNormal = {
+          bg = helpers.mkRaw "colors.crust";
+        };
+        TelescopePreviewBorder = {
+          fg = helpers.mkRaw "colors.crust";
+          bg = helpers.mkRaw "colors.crust";
+        };
+        TelescopePreviewNormal = {
+          bg = helpers.mkRaw "colors.crust";
+        };
+        TelescopePreviewTitle = {
+          fg = helpers.mkRaw "colors.crust";
+          bg = helpers.mkRaw "colors.green";
+        };
+        TelescopePromptBorder = {
+          fg = helpers.mkRaw "colors.mantle";
+          bg = helpers.mkRaw "colors.mantle";
+        };
+        TelescopePromptNormal = {
+          fg = helpers.mkRaw "colors.text";
+          bg = helpers.mkRaw "colors.mantle";
+        };
+        TelescopePromptPrefix = {
+          fg = helpers.mkRaw "colors.red";
+          bg = helpers.mkRaw "colors.mantle";
+        };
+        TelescopePromptTitle = {
+          fg = helpers.mkRaw "colors.crust";
+          bg = helpers.mkRaw "colors.red";
+        };
+        TelescopeResultsBorder = {
+          fg = helpers.mkRaw "colors.crust";
+          bg = helpers.mkRaw "colors.crust";
+        };
+        TelescopeResultsNormal = {
+          bg = helpers.mkRaw "colors.crust";
+        };
+        TelescopeResultsTitle = {
+          fg = helpers.mkRaw "colors.crust";
+          bg = helpers.mkRaw "colors.crust";
+        };
+        PmenuSel = {
+          bg = helpers.mkRaw "colors.base";
+          fg = "NONE";
+        };
+        Pmenu = {
+          fg = helpers.mkRaw "colors.crust";
+          bg = helpers.mkRaw "colors.mantle";
+        };
+        CmpItemKindSnippet = {
+          bg = helpers.mkRaw "colors.mauve";
+          fg = helpers.mkRaw "colors.crust";
+        };
+        CmpItemKindKeyword = {
+          bg = helpers.mkRaw "colors.red";
+          fg = helpers.mkRaw "colors.crust";
+        };
+        CmpItemKindText = {
+          bg = helpers.mkRaw "colors.teal";
+          fg = helpers.mkRaw "colors.crust";
+        };
+        CmpItemKindMethod = {
+          bg = helpers.mkRaw "colors.blue";
+          fg = helpers.mkRaw "colors.crust";
+        };
+        CmpItemKindConstructor = {
+          bg = helpers.mkRaw "colors.blue";
+          fg = helpers.mkRaw "colors.crust";
+        };
+        CmpItemKindFunction = {
+          bg = helpers.mkRaw "colors.blue";
+          fg = helpers.mkRaw "colors.crust";
+        };
+        CmpItemKindFolder = {
+          bg = helpers.mkRaw "colors.blue";
+          fg = helpers.mkRaw "colors.crust";
+        };
+        CmpItemKindModule = {
+          bg = helpers.mkRaw "colors.blue";
+          fg = helpers.mkRaw "colors.crust";
+        };
+        CmpItemKindConstant = {
+          bg = helpers.mkRaw "colors.peach";
+          fg = helpers.mkRaw "colors.crust";
+        };
+        CmpItemKindField = {
+          bg = helpers.mkRaw "colors.green";
+          fg = helpers.mkRaw "colors.crust";
+        };
+        CmpItemKindProperty = {
+          bg = helpers.mkRaw "colors.green";
+          fg = helpers.mkRaw "colors.crust";
+        };
+        CmpItemKindEnum = {
+          bg = helpers.mkRaw "colors.green";
+          fg = helpers.mkRaw "colors.crust";
+        };
+        CmpItemKindUnit = {
+          bg = helpers.mkRaw "colors.green";
+          fg = helpers.mkRaw "colors.crust";
+        };
+        CmpItemKindClass = {
+          bg = helpers.mkRaw "colors.yellow";
+          fg = helpers.mkRaw "colors.crust";
+        };
+        CmpItemKindVariable = {
+          bg = helpers.mkRaw "colors.red";
+          fg = helpers.mkRaw "colors.crust";
+        };
+        CmpItemKindFile = {
+          bg = helpers.mkRaw "colors.blue";
+          fg = helpers.mkRaw "colors.crust";
+        };
+        CmpItemKindInterface = {
+          bg = helpers.mkRaw "colors.yellow";
+          fg = helpers.mkRaw "colors.crust";
+        };
+        CmpItemKindColor = {
+          bg = helpers.mkRaw "colors.red";
+          fg = helpers.mkRaw "colors.crust";
+        };
+        CmpItemKindReference = {
+          bg = helpers.mkRaw "colors.red";
+          fg = helpers.mkRaw "colors.crust";
+        };
+        CmpItemKindEnumMember = {
+          bg = helpers.mkRaw "colors.red";
+          fg = helpers.mkRaw "colors.crust";
+        };
+        CmpItemKindStruct = {
+          bg = helpers.mkRaw "colors.blue";
+          fg = helpers.mkRaw "colors.crust";
+        };
+        CmpItemKindValue = {
+          bg = helpers.mkRaw "colors.peach";
+          fg = helpers.mkRaw "colors.crust";
+        };
+        CmpItemKindEvent = {
+          bg = helpers.mkRaw "colors.blue";
+          fg = helpers.mkRaw "colors.crust";
+        };
+        CmpItemKindOperator = {
+          bg = helpers.mkRaw "colors.blue";
+          fg = helpers.mkRaw "colors.crust";
+        };
+        CmpItemKindTypeParameter = {
+          bg = helpers.mkRaw "colors.blue";
+          fg = helpers.mkRaw "colors.crust";
+        };
+        CmpItemKindCopilot = {
+          bg = helpers.mkRaw "colors.teal";
+          fg = helpers.mkRaw "colors.crust";
+        };
+      }}
+        end
+    '';
   };
 }

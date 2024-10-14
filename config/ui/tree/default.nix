@@ -1,4 +1,4 @@
-{...}: {
+{ ... }: {
   config = {
     plugins.neo-tree = {
       enable = true;
@@ -8,7 +8,7 @@
       enableRefreshOnWrite = true;
       autoCleanAfterSessionRestore = true;
       sourceSelector = {
-        winbar = true;
+        # winbar = true;
         contentLayout = "focus";
         sources = [
           {
@@ -68,7 +68,7 @@
     keymaps = [
       {
         key = "<leader>e";
-        mode = ["n" "v"];
+        mode = [ "n" "v" ];
         action = "<cmd>Neotree toggle<cr>";
         options = {
           desc = "Neotree toggle";
@@ -76,8 +76,8 @@
       }
       {
         key = "<leader>o";
-        mode = ["n" "v"];
-        action = ''
+        mode = [ "n" "v" ];
+        action.__raw = ''
           function()
             if vim.bo.filetype == "neo-tree" then
               vim.cmd.wincmd "p"
@@ -86,7 +86,6 @@
             end
           end
         '';
-        lua = true;
         options = {
           desc = "Neotree toggle focus";
         };
